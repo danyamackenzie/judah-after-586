@@ -1,0 +1,22 @@
+/* Placeholder styles for the test page. The real design comes later. */
+
+/* The whole page: font, text colour and background */
+body {
+  font-family: Georgia, serif;
+  color: #222222;
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+/* The main content: a readable width, centred, with space around it */
+main {
+  max-width: 40rem;
+  margin: 4rem auto;
+  padding: 0 1rem;
+}
+
+/* The small "test page" label above the heading */
+.notice {
+  font-size: 0.9rem;
+  color: #8a5a00;
+}
