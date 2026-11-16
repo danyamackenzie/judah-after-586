@@ -1,22 +1,131 @@
-/* Placeholder styles for the test page. The real design comes later. */
+/* ==========================================================
+   Judah after 586 BCE: site styles ("Limestone and ink")
+   Bootstrap supplies the layout grid and the mobile menu.
+   Everything about colour and type is set here.
+   ========================================================== */
 
-/* The whole page: font, text colour and background */
+/* ---------- 1. Design values, defined once and reused ---------- */
+/* Change a colour here and it changes everywhere it is used. */
+:root {
+  --limestone: #f3eee3;      /* page background */
+  --limestone-dark: #e6dfcf; /* panels and the map background */
+  --rule: #cfc5b0;           /* thin dividing lines */
+  --ink: #2b2620;            /* main text */
+  --ink-soft: #6b6253;       /* secondary text, labels */
+  --lapis: #2d4373;          /* accent: links and the current page */
+
+  /* Map status colours */
+  --continuity: #3f7a4a;     /* both scholars accept continued occupation */
+  --disputed: #c08a1e;       /* the scholars disagree */
+  --destruction: #a5382f;    /* both accept destruction or abandonment */
+
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'EB Garamond', Georgia, serif;
+}
+
+/* ---------- 2. Page basics ---------- */
 body {
-  font-family: Georgia, serif;
-  color: #222222;
-  background-color: #ffffff;
-  line-height: 1.6;
+  background-color: var(--limestone);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.25rem;   /* 20px: Garamond reads small, so it is set larger */
+  line-height: 1.55;
 }
 
-/* The main content: a readable width, centred, with space around it */
-main {
-  max-width: 40rem;
-  margin: 4rem auto;
-  padding: 0 1rem;
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.1;
 }
 
-/* The small "test page" label above the heading */
-.notice {
-  font-size: 0.9rem;
-  color: #8a5a00;
+h1 { font-size: 3rem; margin-bottom: 1rem; }
+h2 { font-size: 2rem; font-weight: 600; }
+
+/* Smaller heading on phones */
+@media (max-width: 576px) {
+  h1 { font-size: 2.25rem; }
+}
+
+a { color: var(--lapis); }
+
+/* Keeps lines of prose at a comfortable reading length */
+.prose { max-width: 38rem; }
+
+/* ---------- 3. Header and navigation ---------- */
+.site-nav {
+  border-bottom: 1px solid var(--rule);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.site-nav .navbar-brand {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.site-nav .nav-link {
+  color: var(--ink);
+  font-size: 1.1rem;
+}
+
+.site-nav .nav-link:hover { color: var(--lapis); }
+
+/* The page the visitor is currently on */
+.site-nav .nav-link.active {
+  color: var(--lapis);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+/* ---------- 4. Main content ---------- */
+main { padding: 3rem 0 4rem; }
+
+/* The small italic line above each page title */
+.kicker {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* "Draft" marker shown until a page's content is approved */
+.draft-notice {
+  display: inline-block;
+  border: 1px solid var(--disputed);
+  color: #7a5608;
+  font-size: 0.95rem;
+  padding: 0.15rem 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- 5. Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-size: 1rem;
+  padding: 1.5rem 0 2.5rem;
+}
+
+/* ---------- 6. Accessibility ---------- */
+/* A link that appears only when someone navigates by keyboard,
+   letting them jump past the menu straight to the content. */
+.skip-link {
+  position: absolute;
+  left: -999px;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+
+/* A clear outline on whatever has keyboard focus */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--lapis);
+  outline-offset: 3px;
 }
